@@ -2,13 +2,9 @@ import os
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-from tensorflow import keras
+import tensorflow as tf
 
-# prediction_probability = model1.predict(x_test)
-# prediction = np.array([np.argmax(pred) for pred in prediction_probability])
 
-# # Display the model performance
-# print(classification_report(y_test, prediction))
 
 models = {}
 models_directory = '../assets/models'
@@ -17,15 +13,16 @@ images_directory = '../assets/images'
 for model_file in os.listdir(models_directory):
     model_path = os.path.join(models_directory, model_file)
     try:
-        model = keras.models.load_model(model_path)
+        model = tf.keras.models.load_model(model_path)
         models[model_file] = model
     except Exception as e:
         print(f"Could not lead model {model_file}: {e}")
 
-for image_file in os.listdir(images_directory):
+print(f"Loaded {len(models)} models from assets directory")
+
+def DigitRecognition(image_path):
     try:
-        image_path = os.path.join(images_directory, image_file)
-        img = np.array([cv2.imread(image_path)[:,:,0]])
+        img = np.array([cv2.imread(image_path)[:, :, 0]])
         img = np.invert(img)
         plt.imshow(img[0], cmap='binary')
         plt.show()
@@ -35,3 +32,50 @@ for image_file in os.listdir(images_directory):
 
     except Exception as e:
         print(e)
+
+def DigitRecognitionFromAssets():
+    for image_file in os.listdir(images_directory):
+        DigitRecognition(os.path.join(images_directory, image_file))
+        input()
+
+def DisplayAllModelStatistics():
+    data = tf.keras.datasets.mnist
+    (x_train, y_train), (x_test, y_test) = data.load_data()
+    for model in models:
+        print(f"{model} : {models[model].evaluate(x_test,y_test)}")
+#{models[model].summary()}
+
+while True:
+    print("\nDigit Recognition App - option enter")
+    print("1. Recognition on provided image path")
+    print("2. Recognition on all images loaded in assets directory")
+    print("3. Display model performance statistics for currently loaded models")
+    print("4. Exit\n")
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        image_path = input("Enter image path: ")
+        if os.path.isfile(image_path):
+            DigitRecognition(image_path)
+        else:
+            print("Invalid image path")
+
+    elif choice == '2':
+        DigitRecognitionFromAssets()
+
+    elif choice == '3':
+        DisplayAllModelStatistics()
+
+    elif choice == '4':
+        break
+
+    else:
+        print("Invalid choice")
+
+
+
+
+
+
+
