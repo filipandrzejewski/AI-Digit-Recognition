@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8ce90c6-193a-4ed6-b889-5b687f29c677" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/scripts/model_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/model_creator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/model.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +144,7 @@
       <workItem from="1730036304952" duration="3738000" />
       <workItem from="1730040307686" duration="41000" />
       <workItem from="1730040585828" duration="11096000" />
+      <workItem from="1730057701645" duration="1943000" />
     </task>
     <servers />
   </component>
@@ -150,6 +154,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AI_Digits_Recognition$model2.coverage" NAME="model2 Coverage Results" MODIFIED="1729949883747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/AI_Digits_Recognition$model_creator.coverage" NAME="model_creator Coverage Results" MODIFIED="1730053713490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
-    <SUITE FILE_PATH="coverage/AI_Digits_Recognition$digitRecognition.coverage" NAME="digitRecognition Coverage Results" MODIFIED="1730056566333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/AI_Digits_Recognition$digitRecognition.coverage" NAME="digitRecognition Coverage Results" MODIFIED="1730063594488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
 </project>
