@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8ce90c6-193a-4ed6-b889-5b687f29c677" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/digitRecognition.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/digitRecognition.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/model_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/model_creator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

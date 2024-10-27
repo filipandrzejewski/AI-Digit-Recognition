@@ -70,7 +70,7 @@ load_convoluted_sequential_model = True
 if (load_convoluted_sequential_model):
     model3 = tf.keras.models.Sequential()
     model3.add(tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)))
-    model3.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu'))
+    model3.add(tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'))
     model3.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
     model3.add(tf.keras.layers.Dropout(0.25))
     model3.add(tf.keras.layers.Flatten())
@@ -95,7 +95,9 @@ if (load_convoluted_sequential_model):
 #   Dense layer [with relu activation] (most basic layer, each neuron is connected to every previous layer neuron)
 #   Dense layer [with softmax activation and units = 10] (used as an output layer converging neurons by softmax activation into 10 outputs [1 for each digit])
 #   Dropout layer (randomly disregards sets to regulate output and making model less sensitive to specific neurons)
-
+#   Conv2D layer (convoluted layer, extracts spatial features using convolutional filters like edge detection)
+#   MaxPooling2D layer (reduces computational costs and overfitting problems by reducing dimensions of samples)
+#
 
 # Fit function call will execute with following arguments:
 #   training data = x_train, y_train
