@@ -4,7 +4,7 @@ import tensorflow as tf
 data = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = data.load_data()
 
-load_sequential_primitive_model = True
+load_sequential_primitive_model = False
 #region Sequential Primitive
 if (load_sequential_primitive_model):
     model0 = tf.keras.models.Sequential()
@@ -23,7 +23,7 @@ if (load_sequential_primitive_model):
     model0.save('../assets/models/SequentialPrimitiveModel.keras')
 #endregion
 
-load_sequential_light_model = True
+load_sequential_light_model = False
 #region Sequential Light
 if load_sequential_light_model:
     model1 = tf.keras.models.Sequential()
@@ -42,7 +42,7 @@ if load_sequential_light_model:
     model1.save('../assets/models/SequentialLightModel.keras')
 #endregion
 
-load_sequential_medium_model = True
+load_sequential_medium_model = False
 #region Sequential Medium
 if (load_sequential_medium_model):
     model2 = tf.keras.models.Sequential()
@@ -65,8 +65,33 @@ if (load_sequential_medium_model):
     model2.save('../assets/models/SequentialMediumModel.keras')
 #endregion
 
+load_convoluted_sequential_model = True
+#region Convoluted Sequential
+if (load_convoluted_sequential_model):
+    model3 = tf.keras.models.Sequential()
+    model3.add(tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)))
+    model3.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu'))
+    model3.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
+    model3.add(tf.keras.layers.Dropout(0.25))
+    model3.add(tf.keras.layers.Flatten())
+    model3.add(tf.keras.layers.Dense(256, activation='relu'))
+    model3.add(tf.keras.layers.Dropout(0.5))
+    model3.add(tf.keras.layers.Dense(10, activation='softmax'))
+
+    model3.compile(
+        optimizer = tf.keras.optimizers.Adadelta(),
+        loss = 'sparse_categorical_crossentropy',
+        metrics = ['accuracy']
+    )
+
+    model3.fit(x_train, y_train, epochs=20)
+
+    model3.save('../assets/models/ConvolutedSequentialModel.keras')
+
+#endregion
+
 #Layers used in present models:
-#   Flatten layer (converts multidimensional data into 1D vector)
+#   Flatten layer (converts multidimensional data into a single layer [1D vector] in this case 784 neurons long)
 #   Dense layer [with relu activation] (most basic layer, each neuron is connected to every previous layer neuron)
 #   Dense layer [with softmax activation and units = 10] (used as an output layer converging neurons by softmax activation into 10 outputs [1 for each digit])
 #   Dropout layer (randomly disregards sets to regulate output and making model less sensitive to specific neurons)

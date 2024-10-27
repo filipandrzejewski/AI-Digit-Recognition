@@ -43,14 +43,18 @@ def DisplayAllModelStatistics():
     (x_train, y_train), (x_test, y_test) = data.load_data()
     for model in models:
         print(f"{model} : {models[model].evaluate(x_test,y_test)}")
-#{models[model].summary()}
+
+def DisplayAllModelSummary():
+    for model in models:
+        print(f"{model} : {models[model].summary()}")
 
 while True:
     print("\nDigit Recognition App - option enter")
     print("1. Recognition on provided image path")
     print("2. Recognition on all images loaded in assets directory")
     print("3. Display model performance statistics for currently loaded models")
-    print("4. Exit\n")
+    print("4. Display model summary for currently loaded models")
+    print("5. Exit\n")
 
     choice = input("Enter your choice: ")
 
@@ -68,6 +72,9 @@ while True:
         DisplayAllModelStatistics()
 
     elif choice == '4':
+        DisplayAllModelSummary()
+
+    elif choice == '5':
         break
 
     else:
