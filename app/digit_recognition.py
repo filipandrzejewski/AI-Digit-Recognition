@@ -5,9 +5,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 
-
 models = []
-models_names = []
+model_names = []
 
 models_directory = '../assets/models'
 images_directory = '../assets/images'
@@ -17,23 +16,27 @@ for model_file in os.listdir(models_directory):
     try:
         model = tf.keras.models.load_model(model_path)
         models.append(model)
-        models_names.append(model_file)
+        model_names.append(model_file)
     except Exception as e:
         print(f"Could not lead model {model_file}: {e}")
 
 print(f"Loaded {len(models)} models from assets directory")
 
-def recognize_digit(image_path, plotShow = True):
+def recognize_digit(image_path, plot_show = True):
     try:
         loaded_image = cv2.imread(image_path)[:, :, 0]
         img = np.array([cv2.resize(loaded_image, (28, 28))])
         img = np.invert(img)
-        if plotShow:
+        if plot_show:
             plt.imshow(img[0], cmap='binary')
             plt.show()
         for index, model in enumerate(models):
-            prediction = model.predict(img)
-            print(f"{models_names[index]} says - The digit is: {np.argmax(prediction)}")
+            prediction = model.predict(img, verbose=0)
+            print(f"{model_names[index]} says - The digit is: {np.argmax(prediction)}")
+
+        print("--------------------------------------------------------\n")
+
+
 
     except Exception as e:
         print(e)
@@ -48,8 +51,8 @@ def display_all_model_statistics():
     data = tf.keras.datasets.mnist
     (x_train, y_train), (x_test, y_test) = data.load_data()
     for index, model in enumerate(models):
-        print(f"{models_names[index]} : {model.evaluate(x_test,y_test)}")
+        print(f"{model_names[index]} : {model.evaluate(x_test, y_test)}")
 
 def display_all_model_summary():
     for index, model in enumerate(models):
-        print(f"{models_names[index]} : {model.summary()}")
+        print(f"{model_names[index]} : {model.summary()}")

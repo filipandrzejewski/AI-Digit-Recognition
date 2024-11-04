@@ -6,7 +6,7 @@ data = tf.keras.datasets.mnist
 
 load_sequential_primitive_model = False
 #region Sequential Primitive
-if (load_sequential_primitive_model):
+if load_sequential_primitive_model:
     model0 = tf.keras.models.Sequential()
     model0.add(tf.keras.layers.Flatten(input_shape=(28, 28, )))
     model0.add(tf.keras.layers.Dense(32, activation='relu'))
@@ -44,7 +44,7 @@ if load_sequential_light_model:
 
 load_sequential_medium_model = False
 #region Sequential Medium
-if (load_sequential_medium_model):
+if load_sequential_medium_model:
     model2 = tf.keras.models.Sequential()
     model2.add(tf.keras.layers.Flatten(input_shape=(28, 28, )))
     model2.add(tf.keras.layers.Dense(128, activation='relu'))
@@ -67,7 +67,7 @@ if (load_sequential_medium_model):
 
 load_convoluted_sequential_model = True
 #region Convoluted Sequential
-if (load_convoluted_sequential_model):
+if load_convoluted_sequential_model:
     model3 = tf.keras.models.Sequential()
     model3.add(tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)))
     model3.add(tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu'))
@@ -116,6 +116,3 @@ if (load_convoluted_sequential_model):
 #   max_queue_size = 10 batches of data in waiting queue waiting to be processed by model
 #   workers = 1 thread working on loading data
 #   use_multiprocessing = False - will not spread the process across multiple cores
-
-
-

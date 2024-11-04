@@ -1,10 +1,6 @@
 import pygame
-import numpy as np
-import tensorflow as tf
-from PIL import Image, ImageOps
 import digit_recognition as ai
 import os
-import cv2
 
 screen_size = (400, 400)
 BLACK = (0, 0, 0)
@@ -20,7 +16,7 @@ def drawing_window():
     def predict_digit():
         pygame.image.save(screen, "drawn_digit.png")
 
-        prediction_digit = ai.recognize_digit("drawn_digit.png", False)
+        ai.recognize_digit("drawn_digit.png", False)
 
     def clear_screen():
         screen.fill(WHITE)
